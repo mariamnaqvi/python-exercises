@@ -42,3 +42,40 @@ can_be_enrolled = not class_full and schedule_doesnt_conflict
 
 print (can_be_enrolled)
 
+# 4. A product offer can be applied only if people buys more than 2 items, and the offer has not expired.
+# Premium members do not need to buy a specific amount of products.
+
+premium_member = True
+items_purchased_morethan2 = True
+offer_expired = False
+
+offer_applied = premium_member or (items_purchased_morethan2 and not offer_expired)
+
+print (offer_applied)
+
+# Use the following code to follow the instructions below:
+
+username = 'codeup'
+password = 'notastrongpassword'
+
+# Create a variable that holds a boolean value for each of the following conditions:
+# the password must be at least 5 characters
+password_atleast5 = len(password) >= 5
+
+# the username must be no more than 20 characters
+username_lessthan20 = len(username) <= 20
+
+# the password must not be the same as the username
+pass_username_notsame =  password != username
+
+# bonus neither the username or password can start or end with whitespace
+pass_nospace = password == password.strip()
+username_nospace = username == username.strip()
+
+strong_userpass = (password_atleast5
+and username_lessthan20
+and pass_username_notsame
+and pass_nospace
+and username_nospace)
+
+print (strong_userpass)
