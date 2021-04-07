@@ -3,7 +3,7 @@
 # If price for a movie per day is 3 dollars, how much will you have to pay?
 
 price_per_day = 3
-little_mermaid_days = 1
+little_mermaid_days = 3
 brother_bear_days = 5
 hercules_days = 1
 
@@ -49,9 +49,11 @@ premium_member = True
 items_purchased_morethan2 = True
 offer_expired = False
 
-offer_applied = premium_member or (items_purchased_morethan2 and not offer_expired)
+offer_applied = (premium_member or items_purchased_morethan2) and not offer_expired
 
 print (offer_applied)
+
++-------------------+--------------------++-------------------+--------------------++-------------------+--------------------++-------------------+--------------------++-------------------+--------------------+
 
 # Use the following code to follow the instructions below:
 
