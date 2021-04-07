@@ -33,9 +33,9 @@ print(type({'a': []}))
 # If a user is logged in? (bool)
 # A discount amount to apply to a user's shopping cart? (float)
 # Whether or not a coupon code is valid? (bool)
-# An email address typed into a registration form? (str)
+# An email address typed into a registration form? (list or dict)
 # The price of a product? (float)
-# A Matrix? 9(list)
+# A Matrix? (list of lists)
 # The email addresses collected from a registration form? (str)
 # Information about applicants to Codeup's data science program? (str)
 
@@ -47,11 +47,11 @@ print(type({'a': []}))
 # returns TypeError: can only concatenate str (not "int") to str
 
 6 % 4
-# remainder of 6/4
+# remainder of 6 divided by 4
 # returns 2
 
 type(6 % 4)
-# float
+# int
 # returns int
 
 type(type(6 % 4))
@@ -59,26 +59,34 @@ type(type(6 % 4))
 # returns <class 'type'>
 
 '3 + 4 is ' + 3 + 4
-# 3 + 4 is 7
+# error
 # returns TypeError: can only concatenate str (not "int") to str
 
 0 < 0
 # false
+# returns False
 
 'False' == False
-# False
+# False >> single quotes reads as a string literal while without strings it is a boolean
+# returns False
 
 True == 'True'
 # false
+# returns False
 
 5 >= -5
 # true
+# returns True
 
 True or "42"
 # true
+# returns True >>> if you compare true or anything else, you end up with true if at least one of them is true
+
+'42' or True
+# returns '42' because 42 exists
 
 6 % 5
-# 1
+# 1 >> remainder of 6 divided by 5
 # returns 1
 
 5 < 4 and 1 == 1
