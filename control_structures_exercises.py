@@ -247,14 +247,13 @@ while True:
 bookshelf = [
 {'title' : 'Naked Statistics', 'author': 'Charles Wheelan', 'genre' : 'Non Fiction'},
 {'title' : 'The Vanishing Half', 'author': 'Brit Bennett', 'genre' : 'Historical Fiction'},
-{'title' : 'The Vanishing Half', 'author': 'Brit Bennett', 'genre' : 'Historical Fiction'},
-{'title' : 'The Vanishing Half', 'author': 'Brit Bennett', 'genre' : 'Historical Fiction'},
-
+{'title' : 'City of Margins', 'author': 'William Boyle', 'genre' : 'Thriller'},
+{'title' : 'The City We Became', 'author': 'N.K. Jemisin', 'genre' : 'Fantasy'}
 ]
 for book in bookshelf:
     [print(key, ': ', book[key]) for key in book]
 
-genre = input("Select a genre: ")
+genre = input("Select a genre: ").capitalize()
 book_chosen = [book for book in bookshelf if book['genre'] == genre]
 
 print(book_chosen)
