@@ -116,15 +116,16 @@ students = [
         "pets": [{"species": "dog", "age": 6}],
     },
 ]
-# # How many students are there?
+# 1. How many students are there?
 
 print(f'There are {len(students)} students')
 
 # -------------------------------------------------------------
 
-# How many students prefer light coffee? For each type of coffee roast?
+# 2. How many students prefer light coffee? For each type of coffee roast?
 
 # find the different types of coffee preferences in the list
+
 coffee_roasts = []
 for student in students:
     coffee_pref = student['coffee_preference']
@@ -133,6 +134,7 @@ for student in students:
 print(coffee_roasts)
 
 # to find how many students like each type of coffee roast
+
 count_dark = 0
 count_medium = 0
 count_light = 0
@@ -150,9 +152,10 @@ print(f'{count_dark} students prefer dark coffee')
 
 # --------------------------------------------------------------
 
-# How many types of each pet are there?
+# 3. How many types of each pet are there?
 
 # find how many different types of pets
+
 pet_types = []
 for student in students:
     pets = student['pets']
@@ -163,6 +166,7 @@ for student in students:
 print(pet_types)
 
 #   to find count of each type of pet
+
 count_horse = 0
 count_cat = 0
 count_dog = 0
@@ -180,22 +184,75 @@ print(f'There are {count_horse} horses')
 print(f'There are {count_cat} cats')
 print(f'There are {count_dog} dogs')
 
-# # --------------------------------------------------------------
+# --------------------------------------------------------------
 
-# How many grades does each student have? Do they all have the same number of grades?
-# What is each student's grade average?
-# How many pets does each student have?
-# How many students are in web development? data science?
-# What is the average number of pets for students in web development?
-# What is the average pet age for students in data science?
-# What is most frequent coffee preference for data science students?
-# What is the least frequent coffee preference for web development students?
-# What is the average grade for students with at least 2 pets?
-# How many students have 3 pets?
-# What is the average grade for students with 0 pets?
-# What is the average grade for web development students? data science students?
-# What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
-# What is the average number of pets for medium coffee drinkers?
-# What is the most common type of pet for web development students?
-# What is the average name length?
-# What is the highest pet age for light coffee drinkers?
+# 4. How many grades does each student have? Do they all have the same number of grades?
+
+count_grade = []
+
+for student in students:
+    grade = student['grades']
+    num_grades = len(grade)
+    count_grade.append(num_grades)  
+print(count_grade)
+
+# checking if all students have the same grades
+
+for num_grade in count_grade:
+    if num_grade != count_grade[0]:
+        print ('grade is different')
+print ('All students have the same number of grades')
+
+# --------------------------------------------------------------
+
+# 5. What is each student's grade average?
+
+average_grades_of_all_students = []
+for student in students:
+    grades = student['grades']
+    total = 0 
+    for grade in grades:
+        total += grade
+    average_grade = total / len(grades)
+    average_grades_of_all_students.append(average_grade)
+print (average_grades_of_all_students)
+
+# 6. How many pets does each student have?
+
+count_of_pets = []
+for student in students:
+    pets = student['pets']
+    num_pets = len(pets)
+    count_of_pets.append(num_pets)
+print(count_of_pets)
+
+# --------------------------------------------------------------
+
+# 7. How many students are in web development? data science?
+
+count_WD_students = 0
+count_DS_students = 0
+for student in students:
+    course = student['course']
+    if course == 'web development':
+        count_WD_students += 1
+    else:
+        count_DS_students += 1
+print (count_WD_students)
+print (count_DS_students)
+
+# --------------------------------------------------------------
+
+# 8. What is the average number of pets for students in web development?
+# 9. What is the average pet age for students in data science?
+# 10. What is most frequent coffee preference for data science students?
+# 11. What is the least frequent coffee preference for web development students?
+# 12. What is the average grade for students with at least 2 pets?
+# 13. How many students have 3 pets?
+# 14. What is the average grade for students with 0 pets?
+# 15. What is the average grade for web development students? data science students?
+# 16. What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
+# 17. What is the average number of pets for medium coffee drinkers?
+# 18. What is the most common type of pet for web development students?
+# 19. What is the average name length?
+# 20. What is the highest pet age for light coffee drinkers?
