@@ -153,7 +153,7 @@ while True:
         if int(num_entered) % 2 == 1 and (1 < (int(num_entered)) < 50):
             break
 
-for n in range(1,51):
+for n in range(2,51):
     if n % 2 == 1:
         if n != int(num_entered):
             print(f'Here is an odd number: {n}')
@@ -177,7 +177,7 @@ for n in range(0, int(num_entered) + 1):
 # e. Write a program that prompts the user for a positive integer. Next write a loop that prints out the numbers from the number the user entered down to 1.
 while True:
 
-    num_entered = input('enter a positive number: ')
+    num_entered = input('Enter a positive number: ')
 
     if num_entered.isdigit():
         if int(num_entered) > 0:
@@ -194,15 +194,17 @@ for i in range(1,101):
     print (i)
 
 # For multiples of three print "Fizz" instead of the number
+# For the multiples of five print "Buzz".
+# For numbers which are multiples of both three and five print "FizzBuzz".
 
 for i in range(1,101):
+#put most specific first
     if i % 3 == 0 and i % 5 == 0:
         print ("FizzBuzz")
+     elif i % 3 == 0:
+        print ("Fizz")
     elif i % 5 == 0:
         print ("Buzz")
-        #put most specific first
-    elif i % 3 == 0:
-        print ("Fizz")
     else:
         print(i)
 
