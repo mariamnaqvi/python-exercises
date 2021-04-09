@@ -75,7 +75,7 @@ while i < 101:
 # Alter your loop to count backwards by 5's from 100 to -10.
 
 i = 100
-while i in range (-10, 101):
+while i >= -10:
     print(i)
     i -= 5
 
@@ -109,7 +109,7 @@ while i < 1_000_000:
 # 5
 
 i = 100
-while i in range (5, 101):
+while i > 0:
     print(i)
     i -= 5
 
@@ -130,42 +130,16 @@ while i in range (5, 101):
 # 7 x 9 = 63
 # 7 x 10 = 70
 
-# M code
 proposed_num = int(input('Enter a positive integer: '))
+
 for n in range(1,11):
-    print (f'{proposed_num} X {n} = {proposed_num * n}')
+    print(f'{proposed_num} X {n} = {proposed_num * n}') 
 
-
-
-i = input('Enter a number: ')
-for n in range(1, 11):
-    print(i, 'x', n, '=', i * n)
-print(i)   
-# this does not work
-
-# but this does
-i = 7
-for n in range(1, 11):
-   print(i, 'x', n, '=', i * n)
 
 # ii. Create a for loop that uses print to create the output shown below.
 proposed_num = input('Enter a positive integer: ')
-for n in range(1,10):
+for n in range(1, int(proposed_num)+1):
     print(str(n) * n)
-
-
-
-i = 1
-count = 0
-for i in range (1,10,1):
-    print(i)
-    count += 1
-print(count)
-# dont know how to make it print the number again
-
-for i in range(1, 10):
-    print (str(i)*i)
-# dont understand how this works
 
 # c. break and continue
 
@@ -173,35 +147,44 @@ for i in range(1, 10):
 # (Hint: use the isdigit method on strings to determine this). Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
 
 while True:
-    posited_num = input('Enter an odd number between 1 and 50: ')
-    # make sure input is valid as a digit
-    if posited_num.isdigit():
-        if int(posited_num) % 2 == 0 and int(posited_num) <= 50:
+    num_entered = input('Enter a number between 1 and 50: ')
+
+    if num_entered.isdigit():
+        if int(num_entered) % 2 == 1 and (1 < (int(num_entered)) < 50):
             break
 
-posited_num = int([posited_num])
-for num in range(1, 50, 2):
-    if num == posited_num:
-        print('Yikes!Skipping: ', num)
-else:
-    print('Here is an odd number: ', num)
+for n in range(1,51):
+    if n % 2 == 1:
+        if n != int(num_entered):
+            print(f'Here is an odd number: {n}')
+        else:
+            print('Skipped your number')
 
 # d. The input function can be used to prompt for input and use that input in your python code. Prompt the user to enter a positive number and write a loop that counts from 0 to that number. 
 # (Hints: first make sure that the value the user entered is a valid number, also note that the input function returns a string, so you'll need to convert this to a numeric type.)
 
 while True:
-    posited_num = input('Enter an odd number between 1 and 50: ')
-    # make sure input is valid as a digit
-    if posited_num.isdigit():
-        if int(posited_num) > 0:
+
+    num_entered = input('enter a positive number: ')
+
+    if num_entered.isdigit():
+        if int(num_entered) > 0:
             break
-# range does not include end so pos num + 1
-posited_num = int([posited_num])
-for num in range(0, posited_num + 1):
-    print (num)
+
+for n in range(0, int(num_entered) + 1):
+    print (n)
+
 # e. Write a program that prompts the user for a positive integer. Next write a loop that prints out the numbers from the number the user entered down to 1.
+while True:
 
+    num_entered = input('enter a positive number: ')
 
+    if num_entered.isdigit():
+        if int(num_entered) > 0:
+            break
+
+for n in range(int(num_entered), 0, -1):
+    print (n)
 
 
 # 3. Fizzbuzz
@@ -225,19 +208,18 @@ for i in range(1,101):
 
 # 4. Display a table of powers.
 
-i = int(input('Enter a number: '))
+while True:
+    i = int(input ('What number would you like to go up to? '))
+    print('Here is your table!')
+    print('number | squared | cubed')
+    print('------ | ------- | -----')
+    for i in range(1,i + 1):
+        print(f'{i: 6} | {i**2: 7} | {i**3: 5}')
 
-for n in range(i):
-    print (i ** 2) 
-    print (i ** 3)
-    if input("Do You Want To Continue? [y/n]") == "y":
-    # now print square and cubed
-        print (i ** 2) 
-        print (i ** 3)
-        for i in range (1, posited_num + 1):
-            i_squared = i ** 2
-            i_cubed = i ** 3
-            print(f'{i: 6} | {i_squared: 7} | {i_cubed: 5}'')
+    cont = input('Would you like to continue? [y/n]')
+    if cont != 'y':
+        break
+    
 
 # 5. Convert given number grades into letter grades.
 
