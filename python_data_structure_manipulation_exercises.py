@@ -163,7 +163,7 @@ for student in students:
         pet_type = pet['species']
         if pet_type not in pet_types:
             pet_types.append(pet_type)
-print(pet_types)
+print(f'There are {pet_types} different types of pets')
 
 #   to find count of each type of pet
 
@@ -215,7 +215,7 @@ for student in students:
         total += grade
     average_grade = total / len(grades)
     average_grades_of_all_students.append(average_grade)
-print (average_grades_of_all_students)
+print (f'{average_grades_of_all_students} is each student\'s grade average')
 
 # 6. How many pets does each student have?
 
@@ -224,7 +224,7 @@ for student in students:
     pets = student['pets']
     num_pets = len(pets)
     count_of_pets.append(num_pets)
-print(count_of_pets)
+print(f'Each student has {count_of_pets} pets')
 
 # --------------------------------------------------------------
 
@@ -238,8 +238,8 @@ for student in students:
         count_WD_students += 1
     else:
         count_DS_students += 1
-print (count_WD_students)
-print (count_DS_students)
+print (f'There are {count_WD_students} in web development')
+print (f'There are {count_DS_students} in data science')
 
 # --------------------------------------------------------------
 
@@ -276,7 +276,7 @@ for student in students:
             total_age += age
             total_num_pets += 1
 avg_pet_age = total_age/total_num_pets
-print(avg_pet_age)
+print(f'{avg_pet_age} is the average pet age for students in data science')
 
 # --------------------------------------------------------------
 
@@ -342,7 +342,7 @@ for student in students:
             total_grade += grade
             count_grades += 1
 avg_grade = total_grade / count_grades
-print(avg_grade)
+print(f'{avg_grade} is the average grade for students with at least 2 pets')
 
 # --------------------------------------------------------------
 
@@ -354,7 +354,7 @@ for student in students:
     num_pets = len(pet)
     if len(pet) == 3:
         num_students += 1
-print(num_students)
+print(f'{num_students} have 3 pets')
 
 # --------------------------------------------------------------
 
@@ -370,14 +370,57 @@ for student in students:
             total_grade += grade
             count_grades += 1
 avg_grade = round(total_grade/count_grades, 2)
-print(avg_grade)
+print(f'{avg_grade} is the average grade for students with no pets')
 
 # --------------------------------------------------------------
 
 # 15. What is the average grade for web development students? data science students?
 
+total_grade_WD = 0
+num_grades_WD = 0
+
+total_grade_DS = 0
+num_grades_DS = 0
+
+for student in students:
+    course = student['course']
+    grades = student['grades']
+    for grade in grades:
+        if course == 'web development':
+            total_grade_WD += grade
+            num_grades_WD += 1
+        else:
+            total_grade_DS += grade
+            num_grades_DS += 1
+
+avg_grade_WD = round(total_grade_WD / num_grades_WD, 2)
+avg_grade_DS = round(total_grade_DS/ num_grades_DS, 2)
+print(f'The avergae grade for WD students is {avg_grade_WD}')
+print(f'The avergae grade for DS students is {avg_grade_DS}')
+
+# --------------------------------------------------------------
+
 # 16. What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
+
+
 # 17. What is the average number of pets for medium coffee drinkers?
+
+num_pets = 0 
+num_medium = 0
+
+for student in students:
+    pets = len(student['pets'])
+    coffee_pref = student['coffee_preference']
+    if coffee_pref == 'medium':
+        num_pets += pets
+        num_medium += 1
+avg_num_pets = num_pets / num_medium
+print(f'{avg_num_pets} is the average number of pets for medium coffee drinkers')
+
+# --------------------------------------------------------------
+
 # 18. What is the most common type of pet for web development students?
+
+
 # 19. What is the average name length?
 # 20. What is the highest pet age for light coffee drinkers?
