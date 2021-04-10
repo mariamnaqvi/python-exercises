@@ -402,6 +402,20 @@ print(f'The avergae grade for DS students is {avg_grade_DS}')
 
 # 16. What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
 
+all_grades = []
+for student in students:    
+    coffee_pref = student['coffee_preference']
+    if coffee_pref == 'dark':
+        grades = student['grades']
+        for grade in grades:
+            all_grades.append(grade)
+sorted_all_grades = sorted(all_grades)
+lowest_grade = sorted_all_grades[0]
+highest_grade = sorted_all_grades[-1]
+print(f' These are all the grades sorted in ascending order: {sorted_all_grades}')
+print(f'The grade range for dark coffee drinkers is between {lowest_grade} and {highest_grade}')
+
+# --------------------------------------------------------------
 
 # 17. What is the average number of pets for medium coffee drinkers?
 
@@ -421,6 +435,52 @@ print(f'{avg_num_pets} is the average number of pets for medium coffee drinkers'
 
 # 18. What is the most common type of pet for web development students?
 
+count_horse = 0
+count_cat = 0
+count_dog = 0
+all_pets_WD = []
+for student in students:
+    course = student['course']
+    if course == 'web development':
+        pets_list = student['pets']
+        for pet in pets_list:
+            pet_species = pet['species']
+            if pet_species == 'horse':
+                count_horse += 1
+            elif pet_species == 'cat':
+                count_cat += 1
+            elif pet_species == 'dog':
+                count_dog += 1
+print(count_horse)
+print(count_cat)
+print(count_dog)
+
+# --------------------------------------------------------------
 
 # 19. What is the average name length?
+
+num_students = len(students)
+count_name_len = 0
+for student in students:
+    name = student['student'].replace(" ","")
+    name_len = len(name)
+    count_name_len += name_len
+avg_name_len = count_name_len / num_students
+print(avg_name_len)
+
+# --------------------------------------------------------------
+
 # 20. What is the highest pet age for light coffee drinkers?
+
+max_pet_age = -1
+for student in students:
+    coffee_pref = student['coffee_preference']
+    if coffee_pref == 'light':
+        pets = student['pets']
+        for pet in pets:
+            age = pet['age']
+            max_pet_age = max(age,max_pet_age)
+            
+print(f'{max_pet_age} is the highest pet age for light coffee drinkers')
+
+# --------------------------------------------------------------
