@@ -303,10 +303,79 @@ print(f'{last_el[0].title()} is the most frequent coffee preference')
 # --------------------------------------------------------------
 
 # 11. What is the least frequent coffee preference for web development students?
+
+count_light = 0
+count_dark = 0
+count_medium = 0
+
+for student in students:
+    coffee_pref = student['coffee_preference']
+    course = student['course']
+    if course == 'web development':
+        if coffee_pref == 'light':
+            count_light += 1
+        elif coffee_pref == 'medium':
+            count_medium += 1
+        elif coffee_pref == 'dark':
+            count_dark += 1
+print(count_medium)
+print(count_light)
+print(count_dark)
+coffee_counts = {"light":count_light, "medium":count_medium, "dark":count_dark}
+sorted_coffee_counts = sorted(coffee_counts.items(),key = lambda kv: kv[1])
+print(sorted_coffee_counts)
+# print the first lowest preference since there are 2 of the same counts
+first_el = sorted_coffee_counts[0]
+print(f'{first_el[0].title()} is the least frequent coffee preference among WD students')
+
+# --------------------------------------------------------------
+
 # 12. What is the average grade for students with at least 2 pets?
+
+count_grades = 0
+total_grade = 0
+for student in students:
+    grades = student['grades']
+    num_pets = len(student['pets'])
+    if num_pets >= 2:
+        for grade in grades:
+            total_grade += grade
+            count_grades += 1
+avg_grade = total_grade / count_grades
+print(avg_grade)
+
+# --------------------------------------------------------------
+
 # 13. How many students have 3 pets?
+
+num_students = 0
+for student in students:
+    pet = student['pets']
+    num_pets = len(pet)
+    if len(pet) == 3:
+        num_students += 1
+print(num_students)
+
+# --------------------------------------------------------------
+
 # 14. What is the average grade for students with 0 pets?
+
+total_grade = 0
+count_grades = 0
+for student in students:
+    grades = student['grades']
+    num_pets = len(student['pets'])
+    for grade in grades:
+        if num_pets == 0:
+            total_grade += grade
+            count_grades += 1
+avg_grade = round(total_grade/count_grades, 2)
+print(avg_grade)
+
+# --------------------------------------------------------------
+
 # 15. What is the average grade for web development students? data science students?
+
 # 16. What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
 # 17. What is the average number of pets for medium coffee drinkers?
 # 18. What is the most common type of pet for web development students?
