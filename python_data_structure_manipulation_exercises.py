@@ -244,8 +244,64 @@ print (count_DS_students)
 # --------------------------------------------------------------
 
 # 8. What is the average number of pets for students in web development?
+
+count_WD_students = 0
+count_of_pets = 0
+for student in students:
+    course = student['course']
+    pets = len(student['pets'])
+    if course == 'web development':
+        count_WD_students += 1
+        count_of_pets += pets
+        
+avg_pets_WD = round(count_of_pets/count_WD_students,3)
+
+print (f'There are {count_WD_students} students in WD') 
+print (f'There are {count_of_pets} pets for students in WD')
+print (f'{avg_pets_WD} is the average number of pets for students in WD')
+
+# --------------------------------------------------------------
+
 # 9. What is the average pet age for students in data science?
+
+total_age = 0
+total_num_pets = 0
+
+for student in students:
+    pets = student['pets']
+    course = student['course']
+    if course == 'data science':
+        for pet in pets:
+            age = pet['age']
+            total_age += age
+            total_num_pets += 1
+avg_pet_age = total_age/total_num_pets
+print(avg_pet_age)
+
+# --------------------------------------------------------------
+
 # 10. What is most frequent coffee preference for data science students?
+
+count_light = 0
+count_medium = 0
+count_dark = 0
+
+for student in students:
+    coffee_pref = student['coffee_preference']
+    if coffee_pref == 'light':
+        count_light += 1
+    elif coffee_pref == 'medium':
+        count_medium += 1
+    elif coffee_pref == 'dark':
+        count_dark += 1
+
+coffee_counts = {"light":count_light, "medium":count_medium, "dark":count_dark}
+sorted_coffee_counts = sorted(coffee_counts.items(),key = lambda kv: kv[1])
+last_el = sorted_coffee_counts[-1]
+print(f'{last_el[0].title()} is the most frequent coffee preference')
+
+# --------------------------------------------------------------
+
 # 11. What is the least frequent coffee preference for web development students?
 # 12. What is the average grade for students with at least 2 pets?
 # 13. How many students have 3 pets?
