@@ -154,8 +154,9 @@ print(f'{count_dark} students prefer dark coffee')
 
 # 3. How many types of each pet are there?
 
-# find how many different types of pets
+# find how many different types of pets and what types
 
+count_pet_types = 0
 pet_types = []
 for student in students:
     pets = student['pets']
@@ -163,7 +164,9 @@ for student in students:
         pet_type = pet['species']
         if pet_type not in pet_types:
             pet_types.append(pet_type)
-print(f'There are {pet_types} different types of pets')
+            count_pet_types += 1
+print(f'There are {count_pet_types} different types of pets')
+print(f'{pet_types} are the different types of pets')
 
 #   to find count of each type of pet
 
@@ -410,8 +413,8 @@ for student in students:
         for grade in grades:
             all_grades.append(grade)
 sorted_all_grades = sorted(all_grades)
-lowest_grade = sorted_all_grades[0]
-highest_grade = sorted_all_grades[-1]
+lowest_grade = min(sorted_all_grades)
+highest_grade = max(sorted_all_grades)
 print(f' These are all the grades sorted in ascending order: {sorted_all_grades}')
 print(f'The grade range for dark coffee drinkers is between {lowest_grade} and {highest_grade}')
 
@@ -480,7 +483,7 @@ for student in students:
         for pet in pets:
             age = pet['age']
             max_pet_age = max(age,max_pet_age)
-            
+
 print(f'{max_pet_age} is the highest pet age for light coffee drinkers')
 
 # --------------------------------------------------------------
