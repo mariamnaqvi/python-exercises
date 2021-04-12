@@ -175,5 +175,4 @@ def cumulative_sum(list_of_numbers):
             new_value = list_of_numbers[index] + output[index-1]
         output.append(new_value)
     return output
-print (cumulative_sum([1,2,3]))
-assert normalize_name('Name') == 'name'
+assert cumulative_sum([1,2,3]) == 6, "x should be 'hello'"
