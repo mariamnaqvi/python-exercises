@@ -3,12 +3,11 @@
  
 #import the module and use the . notation
 import function_exercises
-print(function_exercises.is_two(2))
-print(function_exercises.is_two(4))
+print(function_exercises.is_vowel('y'))
 
 #use from to import the function directly
-from function_exercises import is_vowel
-print(is_vowel('x'))
+from function_exercises import calculate_tip
+print(calculate_tip(10,50))
 print(is_vowel('e'))
 
 #use from and give the function a different name
@@ -20,6 +19,7 @@ print(capit('hello'))
 
 # How many different ways can you combine the letters from "abc" with the numbers 1, 2, and 3?
 
+#from the itertools module importing the product function
 from itertools import product
 print(list(product('ABC', [1,2,3])))
 # 9 different combinations 
@@ -67,14 +67,37 @@ for user in data:
 
 print(f'grand total of all balances: {grand_total}')
 
-
 # Average balance per user
-#divide the total balance from the previous section,  by the length of the dict
-
+#divide the total balance from the previous section, by the length of the dict
+avg_balance = round(grand_total / len(data), 3)
+print(avg_balance)
 
 # User with the lowest balance
 
-# User with the highest balance
+balances_list = []
+lowest_bal_user = []
+highest_bal_user = []
+for user in data:
+    
+    name = user['name']
+    user_balance = user["balance"]
+    sanitized_balance =  user_balance.replace("$","").replace(",","")
+    balances_list.append(sanitized_balance)
+    lowest_bal = min(balances_list)
+    highest_bal = max(balances_list)
+    user_index = user['index']
+    if user_index == 6:
+        lowest_bal_user.append(name)
+    elif user_index == 3:
+        highest_bal_user.append(name)
+        
+print(highest_bal_user)       
+print(lowest_bal_user)
+# to find indexes for lowest and highest balances
+print(list(enumerate(balances_list)))
+
+    # User with the highest balance
+print(highest_bal_user)
 
 # Most common favorite fruit
 favorite_fruits = []
