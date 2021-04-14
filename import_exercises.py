@@ -1,19 +1,21 @@
 # 1. Import and test 3 of the functions from your functions exercise file. Import each function in a different way:
+# run an interactive ipython session
+# type 'ipython' in terminal to start session
 
- 
-#import the module and use the . notation
-import function_exercises
-print(function_exercises.is_vowel('y'))
+import function_exercises # make sure you are in the same directory so it can execute the script
+function_exercises.is_vowel('a')
+function_exercises.is_vowel('b')
 
 #use from to import the function directly
 from function_exercises import calculate_tip
 print(calculate_tip(10,50))
-print(is_vowel('e'))
+print(calculate_tip(0.2,100))
 
 #use from and give the function a different name
 from function_exercises import capital_firstletter as capit
 print(capit('hello'))
 
+#---------------------------------------------------------------------------
 
 # 2. For this exercise, read about and use the itertools module from the standard library to help you solve the problem.
 
@@ -21,16 +23,20 @@ print(capit('hello'))
 
 #from the itertools module importing the product function
 from itertools import product
-print(list(product('ABC', [1,2,3])))
-# 9 different combinations 
+list(itertools.product('ABC', '123'))
+print(len(list(itertools.product('ABC', '123'))))
+# 9 different combinations
 # [('A', 1), ('A', 2), ('A', 3), ('B', 1), ('B', 2), ('B', 3), ('C', 1), ('C', 2), ('C', 3)]
 
     
-# How many different ways can you combine two of the letters from "abcd"?
-from itertools import permutations
-print(list(permutations(['ab', 'cd'])))
-# 2 different ways
-# [('ab', 'cd'), ('cd', 'ab')]
+# How many different ways can you combine two of the letters from "abcd?"
+import itertools 
+
+len(list(itertools.combinations('abcd',2))) # 6 different ways
+
+len(list(itertools.permutations('abcd',2))) # ba is different from ab unlike combinations, 12 different combinations
+
+# ---------------------------------------------------------------------------
 
 # 3. Save this file as profiles.json inside of your exercises directory. Use the load function from the json module to open this file, it will produce a list of dictionaries. Using this data, write some code that calculates and outputs the following information:
 
@@ -42,9 +48,9 @@ with open('/Users/mariamnaqvi/codeup-data-science/python-exercises/profiles.json
     print(data[0])
 # Total number of users  >>  19
 total_users = len(data)
-total_users
+print(f'Number of total users is: {total_users}')
 
-# Number of active users
+# Number of active users >> 9
 active_count = 0
 inactive_count = 0 
 for user in data:
@@ -53,9 +59,19 @@ for user in data:
     else:
         inactive_count += 1
 print(f'number of active users: {active_count}')
+#using lc
+active_accounts = [accnt for accnt in profiles if accnt['isActive']]
 
-# Number of inactive users
+# ---------------------------------------------------------------------------
+
+# Number of inactive users >> 10
 print(f'number of inactive users: {inactive_count}')
+#using lc
+for accnt in data:
+    if not accnt['isActive']:
+        inactive_count.append(accnt)
+
+# ---------------------------------------------------------------------------
 
 # Grand total of balances for all users
 grand_total = 0
@@ -67,10 +83,14 @@ for user in data:
 
 print(f'grand total of all balances: {grand_total}')
 
+# ---------------------------------------------------------------------------
+
 # Average balance per user
 #divide the total balance from the previous section, by the length of the dict
 avg_balance = round(grand_total / len(data), 3)
 print(avg_balance)
+
+# ---------------------------------------------------------------------------
 
 # User with the lowest balance
 
@@ -99,6 +119,8 @@ print(list(enumerate(balances_list)))
     # User with the highest balance
 print(highest_bal_user)
 
+# ---------------------------------------------------------------------------
+
 # Most common favorite fruit
 favorite_fruits = []
 most_common_fave_fruit = ""
@@ -108,19 +130,23 @@ for user in data:
 print(favorite_fruits)
 most_common_fave_fruit = max(favorite_fruits)
 print(f'most common favorite fruit: {most_common_fave_fruit}')
+#using lc
+fruit_list = [accnt['favoriteFruit'] for accnt in profiles]
 
+# ---------------------------------------------------------------------------
 
 # Least most common favorite fruit
 least_common_fave_fruit = min(favorite_fruits)
 print(f'most common favorite fruit: {least_common_fave_fruit}')
 
-# Total number of unread messages for all users
+# ---------------------------------------------------------------------------
+
+# Total number of unread messages for all users >> 210
 #look in the greetings key
 total_unread = 0
 for user in data:
     greeting_value = user["greeting"].split()
-
-    #break the value into mini strings, 
+    #break the value into mini strings
 
     #loop through the array and get the numeric value
     for el in greeting_value:
@@ -128,4 +154,6 @@ for user in data:
             total_unread += int(el)
     #add it to the running total
 print(total_unread)
-    
+
+#  ---------------------------------------------------------------------------
+   
