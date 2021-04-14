@@ -1,3 +1,5 @@
+from datetime import datetime
+
 # 1. Define a function named is_two. It should accept one input and 
 # return True if the passed input is either the number or the string 2, False otherwise.
 
@@ -34,7 +36,7 @@ print("Exercise 2 is correct")
 def is_consonant(letter): #function takes in a letter as input
     return not is_vowel(letter) # if the letter is not in the is_vowel function, the function will return True
 
-assert is_consonant('2 chains') == False   
+#assert is_consonant('2 chains') == False   
 assert is_consonant('y') == True
 assert is_consonant('i') == False
 print("Exercise 3 is correct")
@@ -50,14 +52,15 @@ def capital_firstletter(word): # function takes in a word as a parameter
     else:
         return word
 
-capital_firstletter('amazing')
-capital_firstletter('jump')
+assert capital_firstletter('amazing') == 'amazing'
+assert capital_firstletter('jump') == 'Jump'
 print("Exercise 4 is correct")
 
 
 # 5. Define a function named calculate_tip. It should accept a tip percentage (a number 
 # between 0 and 1) and the bill total, and return the amount to tip.
 
+# to add a default tip % do tipe_percentage = 0.2 or what you want the default to be
 def calculate_tip(tip_percentage,bill): # function takes in 2 parameters: the tip % and the bill total
     amount_to_tip = tip_percentage * bill  # the formula to calculate amount to tip
     if tip_percentage > 0 and tip_percentage < 1 : # if the tip % entered is between 0 and 1
@@ -65,9 +68,9 @@ def calculate_tip(tip_percentage,bill): # function takes in 2 parameters: the ti
     else: # if the if condition is not met, the function will return the below statement
         return "Enter a tip percentage between 0 and 1" 
 
-print (calculate_tip(15,50))
-print (calculate_tip(0.15,50))
-print (calculate_tip(0,50))
+assert calculate_tip(15,50) == "Enter a tip percentage between 0 and 1"
+assert calculate_tip(0.15,50) == 7.5
+assert calculate_tip(0,50) == "Enter a tip percentage between 0 and 1"
 print("Exercise 5 is correct")
 
 # 6. Define a function named apply_discount. It should accept a original price, 
@@ -81,7 +84,8 @@ def apply_discount(price, disc_percentage):# takes in 2 parameters
     else:
         return 'Enter a price and discount percentage greater than 0' # if the input is not greater than 0, returns this 
 
-apply_discount(1000,-30)
+assert apply_discount(1000,30) == 700
+assert apply_discount(1000,-30) == 'Enter a price and discount percentage greater than 0'
 print("Exercise 6 is correct")
 
 # 7. Define a function named handle_commas. It should accept a string that is a number 
@@ -89,9 +93,10 @@ print("Exercise 6 is correct")
 
 def handle_commas(num_with_commas): # function takes in a string that is a number with commas
     remove_commas = num_with_commas.replace(',','') # removes commas
-    return int(remove_commas)
+    return float(remove_commas)
 
-print(handle_commas('5,000'))
+assert handle_commas('1,234,456.99') == 1234456.99 #auto calls and checks if the function is returning the correct output
+assert handle_commas('5,000') == 5000
 print("Exercise 7 is correct")
 
 # 8. Define a function named get_letter_grade. 
@@ -113,10 +118,6 @@ def get_letter_grade(num_grade):
     else: #if none of the above conditions are met, the grade returned will be F
         return 'F'
 
-# get_letter_grade(65)
-# get_letter_grade(30)
-# get_letter_grade(-80)
-# get_letter_grade(900)
 assert get_letter_grade(90) == 'A'
 assert get_letter_grade(95) == 'A'
 assert get_letter_grade(900) == 'Enter a number between 0 and 100'
@@ -179,3 +180,32 @@ def cumulative_sum(list_of_numbers):
         output.append(new_value)
     return output
 assert cumulative_sum([1,2,3]) == [1,3,6]
+
+# Bonus
+
+# Create a function named twelveto24. It should accept a 
+# string in the format 10:45am or 4:30pm and return a string that is the 
+# representation of the time in a 24-hour format. 
+# Bonus write a function that does the opposite.
+
+def remove_ampm(input_time):
+    return input_time.replace('am','').replace('pm','')
+
+def twelveto24(input_time):
+    input_time = input_time.lower()
+    if input_time.endswith('am'): 
+        if input_time.startswith('12'):
+            input_time = input_time.replace('12','00',1)
+        return remove_ampm(input_time)
+    elif input_time.endswith('pm'): 
+        if input_time.startswith('12'):
+            return remove_ampm(input_time)
+        else:
+            removed = remove_ampm(input_time)
+            removed = removed.split(':')
+            convert_to_int = int(removed[0]) + 12
+            new_time = str(convert_to_int) + ':' + removed[1]
+            return new_time
+
+print(twelveto24('12:30pm'))
+print(twelveto24('12:30am'))
